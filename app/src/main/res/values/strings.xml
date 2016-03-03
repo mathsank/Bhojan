@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">Feedly</string>
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_home_page">HomePage</string>
+    <string name="title_activity_sign_up">SignUp</string>
+    <string name="title_activity_log_in">LogIn</string>
+    <string name="title_activity_spot_locat">SpotLocat</string>
+    <string name="title_activity_user_profile">UserProfile</string>
+    <string name="title_activity_edit_prof">EditProf</string>
+</resources>
