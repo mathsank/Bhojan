@@ -10,10 +10,18 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:context="matt.feedly.SplashScreen"
-    tools:showIn="@layout/activity_splash_screen">
+    tools:showIn="@layout/activity_splash_screen"
+    android:clickable="true"
+    android:background="#009688">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+    <ImageView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:id="@+id/imageView"
+        android:src="@drawable/feedex_logo"
+        android:clickable="false"
+        android:backgroundTintMode="src_over"
+        android:background="#009688"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
