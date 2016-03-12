@@ -16,12 +16,9 @@
 
     <ImageView
         android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
+        android:layout_height="@dimen/abc_text_size_display_2_material"
         android:id="@+id/imageView"
         android:src="@drawable/feedex_logo"
-        android:clickable="false"
-        android:backgroundTintMode="src_over"
-        android:background="#009688"
-        android:layout_alignParentTop="true"
+        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
 </RelativeLayout>
