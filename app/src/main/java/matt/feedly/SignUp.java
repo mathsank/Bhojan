@@ -6,8 +6,13 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 public class SignUp extends AppCompatActivity {
+    ListView listView;
+    ArrayAdapter<String> listAdapter;
+    String fragmentArray[] = {"FRAGMENT 1", "FRAGMENT 2"};
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,6 +20,9 @@ public class SignUp extends AppCompatActivity {
         setContentView(R.layout.activity_sign_up);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        listView=(ListView) findViewById(R.id.listview);
+        listAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, fragmentArray);
+        listView.setAdapter(listAdapter);
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
