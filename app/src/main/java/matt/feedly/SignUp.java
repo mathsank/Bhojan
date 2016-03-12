@@ -1,28 +1,51 @@
 package matt.feedly;
 
-import android.os.Bundle;
+ import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v7.app.AppCompatActivity;
+import android.support.v4.widget.DrawerLayout;
+ import android.support.v7.app.ActionBarDrawerToggle;
+ import android.support.v7.app.AppCompatActivity;
+ import android.support.v7.widget.LinearLayoutManager;
+ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
+import butterknife.ButterKnife;
+import butterknife.InjectView;
+
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+ import java.util.ArrayList;
+ import java.util.List;
+
 public class SignUp extends AppCompatActivity {
-    ListView listView;
-    ArrayAdapter<String> listAdapter;
-    String fragmentArray[] = {"FRAGMENT 1", "FRAGMENT 2"};
+    @InjectView(R.id.drawer_layout) DrawerLayout drawerLayout;
+    @InjectView(R.id.toolbar) Toolbar toolbar;
+    @InjectView(R.id.drawer_recyclerView) RecyclerView drawerRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
+        ButterKnife.inject(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-        listView=(ListView) findViewById(R.id.listview);
-        listAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_list_item_1, fragmentArray);
-        listView.setAdapter(listAdapter);
+
+        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
+        drawerLayout.setDrawerListener(drawerToggle);
+        drawerToggle.syncState();
+
+        List<String> rows = new ArrayList<>();
+        rows.add("Option 1");
+        rows.add("Option 2");
+        rows.add("Option 3");
+
+        DrawerAdaptor drawerAdaptor = new DrawerAdaptor(rows);
+        drawerRecyclerView.setAdapter(drawerAdaptor);
+        drawerRecyclerView.setHasFixedSize(true);
+        drawerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
+
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
