@@ -9,7 +9,7 @@
     android:layout_centerHorizontal="true"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:background="#282828">
-
+<!--Content Section-->
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -23,16 +23,17 @@
             android:background="#009688"
             android:elevation="4dp"/>
 
-
+       <!--Main content -->
 
     </LinearLayout>
+    <!--Drawer Section -->
     <android.support.v7.widget.RecyclerView
         android:id="@+id/drawer_recyclerView"
         android:layout_width="304dp"
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:scrollbars="vertical"
-        android:background="#ffffff" />
+        android:background="#282828" />
 
 
 

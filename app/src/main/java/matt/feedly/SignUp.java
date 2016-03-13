@@ -37,9 +37,10 @@ public class SignUp extends AppCompatActivity {
         drawerToggle.syncState();
 
         List<String> rows = new ArrayList<>();
-        rows.add("Option 1");
-        rows.add("Option 2");
-        rows.add("Option 3");
+        rows.add("About Us");
+        rows.add("Contact Us");
+        rows.add("Exit");
+
 
         DrawerAdaptor drawerAdaptor = new DrawerAdaptor(rows);
         drawerRecyclerView.setAdapter(drawerAdaptor);
@@ -47,14 +48,9 @@ public class SignUp extends AppCompatActivity {
         drawerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
 
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+
+
+
     }
 
 }

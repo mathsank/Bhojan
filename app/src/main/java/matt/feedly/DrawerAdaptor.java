@@ -45,7 +45,8 @@ public class DrawerAdaptor extends RecyclerView.Adapter<DrawerAdaptor.ViewHolder
         if(holder.viewType == ROW_TYPE) {
             String rowText = rows.get(position - 1);
             holder.textView.setText(rowText);
-            holder.imageView.setImageResource(R.mipmap.ic_launcher);
+            holder.imageView.setImageResource(R.mipmap.ic_lock_white_48dp);
+
 
         }
 
@@ -78,5 +79,6 @@ public class DrawerAdaptor extends RecyclerView.Adapter<DrawerAdaptor.ViewHolder
                 ButterKnife.inject(this, itemView);
             }
         }
+
     }
 }
