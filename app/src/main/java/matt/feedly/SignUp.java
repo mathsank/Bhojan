@@ -1,56 +1,58 @@
 package matt.feedly;
 
- import android.os.Bundle;
+import android.content.Context;
+import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
-import android.support.v4.widget.DrawerLayout;
- import android.support.v7.app.ActionBarDrawerToggle;
- import android.support.v7.app.AppCompatActivity;
- import android.support.v7.widget.LinearLayoutManager;
- import android.support.v7.widget.RecyclerView;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
-import butterknife.ButterKnife;
-import butterknife.InjectView;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.Spinner;
+import android.text.TextUtils;
+import android.widget.EditText;
+import android.widget.Toast;
 
-import android.widget.ArrayAdapter;
-import android.widget.ListView;
-
- import java.util.ArrayList;
- import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 public class SignUp extends AppCompatActivity {
-    @InjectView(R.id.drawer_layout) DrawerLayout drawerLayout;
-    @InjectView(R.id.toolbar) Toolbar toolbar;
-    @InjectView(R.id.drawer_recyclerView) RecyclerView drawerRecyclerView;
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up);
-        ButterKnife.inject(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-        ActionBarDrawerToggle drawerToggle = new ActionBarDrawerToggle(this, drawerLayout, toolbar, R.string.app_name, R.string.app_name);
-        drawerLayout.setDrawerListener(drawerToggle);
-        drawerToggle.syncState();
-
-        List<String> rows = new ArrayList<>();
-        rows.add("About Us");
-        rows.add("Contact Us");
-        rows.add("Exit");
-
-
-        DrawerAdaptor drawerAdaptor = new DrawerAdaptor(rows);
-        drawerRecyclerView.setAdapter(drawerAdaptor);
-        drawerRecyclerView.setHasFixedSize(true);
-        drawerRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-
-
 
 
 
     }
 
+    public boolean JoinNow(String pwd, String cpwd) {
+        Pattern pattern = Pattern.compile(pwd, Pattern.CASE_INSENSITIVE);
+        Matcher matcher = pattern.matcher(cpwd);
+
+        if (!matcher.matches()) {
+            // do your Toast("passwords are not matching");
+
+            {Context context= getApplicationContext();
+                CharSequence text="Passwords do not match";
+                int duration= Toast.LENGTH_SHORT;
+                Toast toast = Toast.makeText(context,text,duration);
+
+            }
+
+            return false;
+        }
+
+        return true;
+    }
+
+
 }
+
+

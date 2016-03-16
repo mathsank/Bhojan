@@ -7,4 +7,14 @@
     <string name="title_activity_spot_locat">SpotLocat</string>
     <string name="title_activity_user_profile">UserProfile</string>
     <string name="title_activity_edit_prof">EditProf</string>
+
+    <string-array name="area_name">
+        <item>Adyar</item>
+        <item>Anna Nagar</item>
+        <item>Kilpauk</item>
+        <item>Kodambakkam</item>
+        <item>Mylapore</item>
+        <item>T-Nagar</item>
+        <item>Thiruvanmiyur</item>
+    </string-array>
 </resources>
