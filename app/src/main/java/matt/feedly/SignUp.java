@@ -30,29 +30,82 @@ public class SignUp extends AppCompatActivity {
 
 
 
+
     }
 
-    public boolean JoinNow(String pwd, String cpwd) {
-        Pattern pattern = Pattern.compile(pwd, Pattern.CASE_INSENSITIVE);
-        Matcher matcher = pattern.matcher(cpwd);
+    public boolean JoinNow(View view) {
+        //Password Validation
+        final EditText passValidate=(EditText)findViewById(R.id.pwd);
+        String pwd=passValidate.getText().toString();
+        String passPattern="[a-zA-Z0-9.]";
+        if(pwd.matches(passPattern))
+        {Toast.makeText(getApplicationContext(), "Valid Password", Toast.LENGTH_SHORT).show();}
+        else
+        {Toast.makeText(getApplicationContext(), "Invalid Password", Toast.LENGTH_SHORT).show();}
 
-        if (!matcher.matches()) {
-            // do your Toast("passwords are not matching");
+        //Spinner Validation
+        final Spinner st=(Spinner)findViewById(R.id.area);
+        String area=st.getSelectedItem().toString();
+        String area1="Choose Area";
+        if(area.equals(area1)) {
+            Toast.makeText(getApplicationContext(), "Choose area", Toast.LENGTH_SHORT).show();
+        }
+        else
+        {Toast.makeText(getApplicationContext(), "Valid area", Toast.LENGTH_SHORT).show();}
 
+        //Phone Number validation
+
+        final EditText phValidate=(EditText)findViewById(R.id.phno);
+        String phno=phValidate.getText().toString().trim();
+        String MobilePattern = "[0-9]{10}";
+
+
+        if(phno.matches(MobilePattern) && phno.length()==10) {
+            Toast.makeText(getApplicationContext(), "Valid phone number", Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(getApplicationContext(), "Invalid Phone number", Toast.LENGTH_SHORT).show();
+        }
+
+        //Emailaddress Validation
+        final EditText emailValidate = (EditText)findViewById(R.id.email);
+        String email = emailValidate.getText().toString().trim();
+        String emailPattern = "[a-zA-Z0-9._-]+@[a-z]+\\.+[a-z.]+";
+
+
+        if (email.matches(emailPattern))
+        {
+            Toast.makeText(getApplicationContext(),"Valid email address",Toast.LENGTH_SHORT).show();
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(),"Invalid email address", Toast.LENGTH_SHORT).show();
+        }
+
+
+
+        //Confirm Password and Password match checking
+
+        String password=passValidate.getText().toString();
+
+        EditText cpwd=(EditText) findViewById(R.id.cpwd);
+        String cpassword=cpwd.getText().toString();
+        if (password.equals(cpassword)) {
+
+            return false;
+        }
+        else
             {Context context= getApplicationContext();
                 CharSequence text="Passwords do not match";
                 int duration= Toast.LENGTH_SHORT;
                 Toast toast = Toast.makeText(context,text,duration);
-
+                toast.show();
             }
-
-            return false;
-        }
 
         return true;
     }
-
-
 }
+
+
 
 

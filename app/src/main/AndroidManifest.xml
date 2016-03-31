@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="matt.feedly">
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
 
     <application
         android:allowBackup="true"
@@ -8,10 +9,14 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+
         <activity
             android:name=".SplashScreen"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
+
+
+
 
         </activity>
         <activity
@@ -21,10 +26,6 @@
         <activity
             android:name=".LogIn"
             android:label="@string/title_activity_log_in"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
-            android:name=".SpotLocat"
-            android:label="@string/title_activity_spot_locat"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".UserProfile"
@@ -39,7 +40,7 @@
             android:label="@string/title_activity_sign_up"
             android:theme="@style/AppTheme">
             <intent-filter>
-                <action android:name="android.intent.action.MAIN"></action>
+                <action android:name="android.intent.action.MAIN"/>
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

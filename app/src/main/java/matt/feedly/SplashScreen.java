@@ -1,17 +1,20 @@
 package matt.feedly;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 public class SplashScreen extends AppCompatActivity {
 
@@ -22,7 +25,22 @@ public class SplashScreen extends AppCompatActivity {
         final ImageView iv= (ImageView)findViewById(R.id.imageView);
         final Animation an= AnimationUtils.loadAnimation(getBaseContext(),R.anim.rotate);
 
+        if (AppStatus.getInstance(this).isOnline()) {
+            Context context= getApplicationContext();
+            CharSequence text="You are online!!!!";
+            int duration= Toast.LENGTH_SHORT;
+            Toast t = Toast.makeText(context,text,duration);
 
+            t.show();
+
+        } else {Context context= getApplicationContext();
+            CharSequence text="You are offline!!!!";
+            int duration= Toast.LENGTH_SHORT;
+            Toast t = Toast.makeText(context, text,duration);
+            t.show();
+            finish();
+            Log.v("Home", "############################You are not online!!!!");
+        }
 
         iv.startAnimation(an);
         an.setAnimationListener(new Animation.AnimationListener() {

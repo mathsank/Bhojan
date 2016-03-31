@@ -9,6 +9,7 @@
     <string name="title_activity_edit_prof">EditProf</string>
 
     <string-array name="area_name">
+        <item>Choose Area</item>
         <item>Adyar</item>
         <item>Anna Nagar</item>
         <item>Kilpauk</item>
