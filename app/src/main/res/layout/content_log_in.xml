@@ -13,43 +13,49 @@
     tools:context="matt.feedly.LogIn"
     tools:showIn="@layout/activity_log_in">
 
-
-    <TextView
+    <EditText
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView"
-        android:hint="Email id"
-        android:textColorHint="#FFFFFF"
-        android:drawableLeft="@drawable/ic_email_white_48dp"
-        android:layout_marginTop="183dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_alignEnd="@+id/textView2" />
-
-    <TextView
+        android:layout_height="48dp"
+        android:inputType="textEmailAddress"
+        android:ems="10"
+        android:id="@+id/email"
+        android:hint="Email Id"
+        android:fontFamily="@assets/fonts/roboto.ttf"
+        android:background="@drawable/rounded_edittext"
+        android:textSize="25dp"
+        android:drawableLeft="@mipmap/ic_email_white_48dp"
+        android:layout_below="@+id/imageView2"
+        android:layout_alignStart="@+id/pwd" />
+    <EditText
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:id="@+id/textView2"
-        android:layout_marginTop="53dp"
-        android:drawableLeft="@drawable/ic_lock_white_48dp"
+        android:layout_height="48dp"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:id="@+id/pwd"
         android:hint="Password"
-        android:textColorHint="#FFFFFF"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true" />
+        android:fontFamily="@assets/fonts/roboto.ttf"
+        android:singleLine="true"
+        android:autoText="false"
+        android:password="false"
+        android:background="@drawable/rounded_edittext"
+        android:drawableLeft="@mipmap/ic_lock_white_48dp"
+        android:textSize="25dp"
+        android:layout_below="@+id/email"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp" />
 
     <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LOGIN"
-        android:id="@+id/button3"
-        android:layout_below="@+id/textView2"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_marginTop="45dp"
+        android:layout_width="250dp"
+        android:layout_height="48dp"
+        android:text="LOG IN"
+        android:id="@+id/login"
         android:background="@drawable/button_2"
-        android:textColor="#FFFFFF"
-        android:layout_alignEnd="@+id/textView2" />
+        android:textSize="25dp"
+        android:onClick="LogIn"
+        android:fontFamily="@assets/fonts/roboto.ttf"
+        android:layout_below="@+id/pwd"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp" />
 
     <ImageView
         android:layout_width="wrap_content"
@@ -58,6 +64,7 @@
         android:src="@drawable/login_draw"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
+
 
 
 </RelativeLayout>
