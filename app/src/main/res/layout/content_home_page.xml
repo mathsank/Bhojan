@@ -15,7 +15,7 @@
         android:text="Login"
         android:id="@+id/button"
         android:background="@drawable/button_2"
-        android:layout_marginBottom="203dp"
+        android:layout_marginBottom="210dp"
         android:layout_marginLeft="10dp"
         android:layout_marginRight="0dp"
         android:layout_marginTop="5dp"
@@ -32,7 +32,7 @@
         android:layout_marginLeft="50dp"
         android:layout_below="@+id/button2"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="15dp" />
+        android:layout_marginTop="25dp" />
 
     <Button
         android:id="@+id/imageButton4"
@@ -59,7 +59,7 @@
     <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@drawable/collage"
+        android:background="@drawable/collage1"
         android:layout_above="@+id/button"
         android:id="@+id/imageView" />
 
