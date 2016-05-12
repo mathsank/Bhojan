@@ -106,38 +106,7 @@
         android:textSize="25dp"
         android:layout_marginTop="14dp" />
 
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:inputType="textPostalAddress"
-        android:ems="10"
-        android:id="@+id/addr"
-        android:drawableLeft="@mipmap/ic_map_white_36dp"
-        android:drawablePadding="20dp"
-        android:paddingLeft="10dp"
-        android:hint="Address"
-        android:fontFamily="@assets/fonts/roboto.ttf"
-        android:background="@drawable/rounded_edittext"
-        android:textSize="25dp"
-        android:layout_below="@+id/area"
-        android:layout_alignStart="@+id/phno"
-        android:layout_marginTop="14dp"/>
-
-
-
-    <Spinner
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:id="@+id/area"
-        android:layout_below="@+id/phno"
-        android:background="@drawable/rounded_edittext"
-        android:fontFamily="@assets/fonts/roboto.ttf"
-        android:spinnerMode="dropdown"
-        android:entries="@array/area_name"
-        android:layout_alignStart="@+id/addr"
-        android:layout_alignEnd="@+id/phno"
-        android:layout_marginTop="14dp"/>
-
+   
 
     <Button
         android:layout_width="250dp"
@@ -148,7 +117,7 @@
         android:textSize="25dp"
         android:onClick="JoinNow"
         android:fontFamily="@assets/fonts/roboto.ttf"
-        android:layout_below="@+id/addr"
+        android:layout_below="@+id/phno"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp" />
 
