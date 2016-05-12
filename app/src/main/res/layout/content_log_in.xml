@@ -56,7 +56,7 @@
         android:background="@drawable/button_2"
         android:textSize="25dp"
         android:onClick="LogIn"
-        android:fontFamily="@assets/fonts/roboto.ttf"
+        android:fontFamily="@assets/fonts/Robot-Light.ttf"
         android:layout_below="@+id/pwd"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="25dp" />
