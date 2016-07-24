@@ -18,4 +18,5 @@
         <item>T-Nagar</item>
         <item>Thiruvanmiyur</item>
     </string-array>
+    <string name="title_activity_spot_locate">Map</string>
 </resources>
