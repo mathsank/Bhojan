@@ -27,19 +27,14 @@ public class SplashScreen extends AppCompatActivity {
 
         if (AppStatus.getInstance(this).isOnline()) {
             Context context= getApplicationContext();
-            CharSequence text="You are online!!!!";
-            int duration= Toast.LENGTH_SHORT;
-            Toast t = Toast.makeText(context,text,duration);
-
-            t.show();
 
         } else {Context context= getApplicationContext();
-            CharSequence text="You are offline!!!!";
+            CharSequence text="Check Network Connection and try again.";
             int duration= Toast.LENGTH_SHORT;
             Toast t = Toast.makeText(context, text,duration);
             t.show();
             finish();
-            Log.v("Home", "############################You are not online!!!!");
+            Log.v("Home", "###########################You are not online!!!!");
         }
 
         iv.startAnimation(an);
@@ -52,7 +47,7 @@ public class SplashScreen extends AppCompatActivity {
             @Override
             public void onAnimationEnd(Animation animation) {
                    finish();
-                Intent i= new Intent(getBaseContext(),HomePage.class);
+                Intent i= new Intent(getBaseContext(),SignUp.class);
                 startActivity(i);
             }
 
