@@ -1,7 +1,10 @@
 package matt.feedly;
 
+import android.content.pm.PackageManager;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.support.v4.content.ContextCompat;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -22,8 +25,33 @@ public class SpotLocate extends FragmentActivity implements OnMapReadyCallback {
         SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
+
+
+    }
+    public boolean checkLocationPermission()
+    {
+        String permission = "android.permission.ACCESS_FINE_LOCATION";
+        int res = this.checkCallingOrSelfPermission(permission);
+        return (res == PackageManager.PERMISSION_GRANTED);
     }
 
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        switch (requestCode) {
+            case 1: {
+                // If request is cancelled, the result arrays are empty.
+                if (grantResults.length > 0
+                        && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+
+                } else {
+                    // permission denied, boo! Disable the
+                    // functionality that depends on this permission.
+                }
+                return;
+            }
+            // other 'case' lines to check for other
+            // permissions this app might request
+        }
+    }
 
     /**
      * Manipulates the map once available.
@@ -40,7 +68,7 @@ public class SpotLocate extends FragmentActivity implements OnMapReadyCallback {
 
         // Add a marker in Chennai and move the camera
         LatLng chennai = new LatLng(13.0878400 , 80.2784700);
-        mMap.addMarker(new MarkerOptions().position(chennai).title("Marker in Chennai"));
+         mMap.addMarker(new MarkerOptions().position(chennai).title("Marker in Chennai"));
         mMap.moveCamera(CameraUpdateFactory.newLatLng(chennai));
     }
 }

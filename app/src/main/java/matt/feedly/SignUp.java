@@ -71,16 +71,16 @@ public class SignUp extends AppCompatActivity {
             return;
         }
         else {
-            onSignupSuccess();
+            //onSignupSuccess();
         }
 
 
         _signupButton.setEnabled(false);
 
-        final ProgressDialog progressDialog = new ProgressDialog(SignUp.this, R.style.AppTheme);
+     /*   final ProgressDialog progressDialog = new ProgressDialog(SignUp.this, R.style.AppTheme);
         progressDialog.setIndeterminate(true);
         progressDialog.setMessage("Creating Account...");
-        progressDialog.show();
+        progressDialog.show(); */
 
         String name = _nameText.getText().toString();
         String email = _emailText.getText().toString();
@@ -96,7 +96,7 @@ public class SignUp extends AppCompatActivity {
                         // depending on success
                         onSignupSuccess();
                         // onSignupFailed();
-                        progressDialog.dismiss();
+       //                 progressDialog.dismiss();
                     }
                 }, 3000);
     }
