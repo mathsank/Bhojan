@@ -1,7 +1,6 @@
 package matt.feedly;
 
 import android.app.ProgressDialog;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -13,15 +12,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.HashMap;
-
 import butterknife.ButterKnife;
 import butterknife.InjectView;
 
 public class LogIn extends AppCompatActivity {
     private static final String TAG = "LoginActivity";
     private static final int REQUEST_SIGNUP = 0;
-    private static final String LOGIN_URL = "http://bhojansvce.16mb.com/login1.php";
+
     @InjectView(R.id.input_email)
     EditText _emailText;
     @InjectView(R.id.input_password)
@@ -66,20 +63,24 @@ public class LogIn extends AppCompatActivity {
 
         _loginButton.setEnabled(false);
 
+        final ProgressDialog progressDialog = new ProgressDialog(LogIn.this,
+                R.style.AppTheme);
+        progressDialog.setIndeterminate(true);
+        progressDialog.setMessage("Authenticating..");
+        progressDialog.show();
 
-        final String email = _emailText.getText().toString();
-        final String password = _passwordText.getText().toString();
+        String email = _emailText.getText().toString();
+        String password = _passwordText.getText().toString();
 
         // TODO: Implement your own authentication logic here.
-
 
         new android.os.Handler().postDelayed(
                 new Runnable() {
                     public void run() {
                         // On complete call either onLoginSuccess or onLoginFailed
-                        onLoginSuccess(email,password);
+                        onLoginSuccess();
                         // onLoginFailed();
-
+                        progressDialog.dismiss();
                     }
                 }, 3000);
     }
@@ -92,7 +93,7 @@ public class LogIn extends AppCompatActivity {
 
                 // TODO: Full LogIn logic checking
                 // By default we just finish the Activity and log them in automatically
-               // this.finish();
+                this.finish();
             }
         }
     }
@@ -103,10 +104,9 @@ public class LogIn extends AppCompatActivity {
         moveTaskToBack(true);
     }
 
-    public void onLoginSuccess(final String email , final String password) {
+    public void onLoginSuccess() {
         _loginButton.setEnabled(true);
-        setResult(RESULT_OK, null);
-        checkuser();
+        finish();
     }
 
     public void onLoginFailed() {
@@ -136,51 +136,5 @@ public class LogIn extends AppCompatActivity {
         }
 
         return valid;
-    }
-
-
-private void checkuser(){
-    String email = _emailText.getText().toString().trim().toLowerCase();
-    String password = _passwordText.getText().toString().trim().toLowerCase();
-    check(email,password);
-}
-    private void check(String email, String password)
-    {class UserLoginClass extends AsyncTask<String,Void,String>{
-        ProgressDialog loading;
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            loading = ProgressDialog.show(LogIn.this,"Please Wait",null,true,true);
-        }
-
-
-        protected void onPostExecute(String s) {
-            super.onPostExecute(s);
-            loading.dismiss();
-            if(s.equalsIgnoreCase("success")){
-                Intent intent = new Intent(LogIn.this,SpotLocate.class);
-                finish();
-                startActivity(intent);
-            }else{
-                Toast.makeText(LogIn.this,"Invalid Username or Password",Toast.LENGTH_LONG).show();
-            }
-        }
-
-        @Override
-        protected String doInBackground(String... params) {
-            HashMap<String,String> data = new HashMap<>();
-            data.put("email",params[0]);
-            data.put("password",params[1]);
-
-            RegisterUserClass ruc = new RegisterUserClass();
-
-            String result = ruc.sendPostRequest(LOGIN_URL,data);
-
-            return result;
-        }
-    }
-        UserLoginClass ulc = new UserLoginClass();
-        ulc.execute(email,password);
-
     }
 }
