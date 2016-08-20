@@ -24,6 +24,7 @@ public class SpotLocate extends FragmentActivity implements OnMapReadyCallback {
                 .findFragmentById(R.id.map);
         mapFragment.getMapAsync(this);
         Toolbar toolbar = (Toolbar) findViewById(R.id.bhojan_toolbar);
+        
 
     }
 

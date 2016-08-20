@@ -22,7 +22,7 @@
     </style>
 
     <style name="OverFlow" parent="Widget.AppCompat.ActionButton.Overflow">
-        <!-- <item name="android:src">@drawable/my_overflow_menu</item>
-   --> </style>
+         <item name="android:src">@drawable/my_overflow_menu</item>
+    </style>
 
 </resources>
