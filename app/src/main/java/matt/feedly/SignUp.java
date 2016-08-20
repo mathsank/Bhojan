@@ -180,6 +180,7 @@ public class SignUp extends AppCompatActivity {
             protected void onPostExecute(String s) {
                 super.onPostExecute(s);
                 loading.dismiss();
+                //if()
                 Toast.makeText(getApplicationContext(),s,Toast.LENGTH_LONG).show();
             }
 
