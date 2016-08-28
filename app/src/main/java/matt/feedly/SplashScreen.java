@@ -22,7 +22,7 @@ public class SplashScreen extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final ImageView iv = (ImageView) findViewById(R.id.imageView);
+
 
         if (AppStatus.getInstance(this).isOnline()) {
             Context context = getApplicationContext();
