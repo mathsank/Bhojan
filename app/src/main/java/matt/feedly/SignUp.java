@@ -106,7 +106,8 @@ public class SignUp extends AppCompatActivity {
         _signupButton.setEnabled(true);
         setResult(RESULT_OK, null);
         registerUser();
-
+        Intent intent = new Intent(SignUp.this, LogIn.class);
+        startActivity(intent);
     }
 
     public void onSignupFailed() {
@@ -144,8 +145,8 @@ public class SignUp extends AppCompatActivity {
         } else {
             _passwordText.setError(null);
         }
-        if (cpassword.isEmpty() || cpassword.length() < 4 || cpassword.length() > 10) {
-            _cpasswordText.setError("Between 4 and 10 alphanumeric characters");
+        if (cpassword.isEmpty() || cpassword.length() < 4 ) {
+            _cpasswordText.setError("Atleast 4 characters");
             valid = false;
         } else {
             _cpasswordText.setError(null);

@@ -1,7 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
-   <item android:id="@+id/menu_item_1" android:title="About"/>
-    <item android:id="@+id/menu_item_2" android:title="Contact Us"/>
-    <item android:id="@+id/menu_item_3" android:title="Profile"/>
-    <item android:id="@+id/menu_item_4" android:title="Log out"/>
+   <item android:id="@+id/menu_item_1"
+         android:title="@string/menu_1"
+       android:orderInCategory="1"
+       />
+    <item android:id="@+id/menu_item_2" android:title="@string/menu_2"
+        android:orderInCategory="2"/>
+    <item android:id="@+id/menu_item_3" android:title="@string/menu_3"
+        android:orderInCategory="3"/>
+    <item android:id="@+id/menu_item_4" android:title="@string/menu_4"
+        android:orderInCategory="4"/>
 </menu>
