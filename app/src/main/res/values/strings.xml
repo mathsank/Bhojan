@@ -12,5 +12,9 @@
     <string name="menu_2">Contact Us</string>
     <string name="menu_3">Profile</string>
     <string name="menu_4">Log out</string>
+    <string name="title_activity_locate_spot">LocateSpot</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
 
 </resources>

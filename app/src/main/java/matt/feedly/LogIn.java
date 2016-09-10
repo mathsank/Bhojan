@@ -158,7 +158,7 @@ private void checkuser(){
             super.onPostExecute(s);
             loading.dismiss();
             if(s.equalsIgnoreCase("success")){
-                Intent intent = new Intent(LogIn.this,SpotLocate.class);
+                Intent intent = new Intent(LogIn.this,LocateSpot.class);
                 finish();
                 startActivity(intent);
             }else{
