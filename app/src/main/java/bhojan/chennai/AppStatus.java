@@ -1,4 +1,4 @@
-package matt.feedly;
+package bhojan.chennai;
 
 import android.content.Context;
 import android.net.ConnectivityManager;

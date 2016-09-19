@@ -1,4 +1,4 @@
-package matt.feedly;
+package bhojan.chennai;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
