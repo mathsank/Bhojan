@@ -13,12 +13,19 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.SupportMapFragment;
+
 public class LocateSpot extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
+
+    SupportMapFragment sMapFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        sMapFragment = SupportMapFragment.newInstance();
         setContentView(R.layout.activity_locate_spot);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -34,6 +41,7 @@ public class LocateSpot extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         android.app.FragmentManager fragmentManager = getFragmentManager();
         fragmentManager.beginTransaction().replace(R.id.content_frame, new Map()).commit();
+        sMapFragment.getMapAsync(this);
 
     }
 
@@ -56,8 +64,10 @@ public class LocateSpot extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-
+        android.support.v4.app.FragmentManager sFm = getSupportFragmentManager();
         android.app.FragmentManager fragmentManager = getFragmentManager();
+        if(sMapFragment.isAdded())
+            sFm.beginTransaction().hide(sMapFragment).commit();
         if (id == R.id.nav_profile) {
             fragmentManager.beginTransaction().replace(R.id.content_frame, new ProfileFragment()).commit();
 
@@ -67,13 +77,24 @@ public class LocateSpot extends AppCompatActivity
         } else if (id == R.id.nav_logout) {
 
         } else if (id == R.id.nav_map) {
-            fragmentManager.beginTransaction().replace(R.id.content_frame, new Map()).commit();
+
+            if(!sMapFragment.isAdded()) {
+                sFm.beginTransaction().add(R.id.map, sMapFragment).commit();
+//                fragmentManager.beginTransaction().replace(R.id.content_frame, new Map()).commit();
+            }
+            else
+                sFm.beginTransaction().show(sMapFragment).commit();
 
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onMapReady(GoogleMap googleMap){
+
     }
 
     @Override
