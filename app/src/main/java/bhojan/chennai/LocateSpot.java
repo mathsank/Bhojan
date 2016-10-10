@@ -1,8 +1,11 @@
 package bhojan.chennai;
 
+import android.app.Dialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.location.Geocoder;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.app.AlertDialog;
 import android.view.KeyEvent;
 import android.support.design.widget.NavigationView;
@@ -12,19 +15,38 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
 
+import com.google.android.gms.common.ConnectionResult;
+import com.google.android.gms.common.GoogleApiAvailability;
+import com.google.android.gms.identity.intents.Address;
+import com.google.android.gms.maps.CameraUpdate;
+import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
+import java.io.IOException;
+import java.util.List;
+
+import static bhojan.chennai.R.id.map;
 
 public class LocateSpot extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, OnMapReadyCallback {
 
     SupportMapFragment sMapFragment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        if(googleServicesAvailable())
+        {
+            Toast.makeText(this,"Perfect",Toast.LENGTH_LONG).show();
+
+        }
         sMapFragment = SupportMapFragment.newInstance();
         setContentView(R.layout.activity_locate_spot);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
@@ -79,7 +101,7 @@ public class LocateSpot extends AppCompatActivity
         } else if (id == R.id.nav_map) {
 
             if(!sMapFragment.isAdded()) {
-                sFm.beginTransaction().add(R.id.map, sMapFragment).commit();
+                sFm.beginTransaction().add(map, sMapFragment).commit();
 //                fragmentManager.beginTransaction().replace(R.id.content_frame, new Map()).commit();
             }
             else
@@ -125,8 +147,50 @@ public class LocateSpot extends AppCompatActivity
 
             return true;
         } else {
-            return super.onKeyDown(keyCode, event);
+            return super.onKeyDown(
+                    keyCode, event);
+        }}
+
+    public boolean googleServicesAvailable()
+    {
+        GoogleApiAvailability api = GoogleApiAvailability.getInstance();
+        int isAvailable = api.isGooglePlayServicesAvailable(this);
+        if(isAvailable== ConnectionResult.SUCCESS)
+        {
+            return true;
         }
+        else if(api.isUserResolvableError(isAvailable)){
+            Dialog dialog = api.getErrorDialog(this,isAvailable,0);
+            dialog.show();
+        }
+        else
+        {
+            Toast.makeText(this,"Can't Connect to play services",Toast.LENGTH_LONG).show();
+        }
+        return false;
 
     }
-}
+    }
+
+
+    /*public void geoLocate(View view) {EditText et = (EditText) findViewById(R.id.editText);
+        String location = et.getText().toString();
+        Geocoder gc = new Geocoder(this);
+        List<android.location.Address> list = gc.getFromLocationName(location,3);
+        android.location.Address address= list.get(0);
+        String locality = address.getLocality();
+        Toast.makeText(this,locality,Toast.LENGTH_LONG).show();
+        double lat = address.getLatitude();
+        double lng = address.getLongitude();
+        goToLocationZoom(lat,lng,15);
+    }
+    private void goTolocation(double lat, double lng)
+    {
+        LatLng ll = new LatLng(lat,lng);
+        CameraUpdate update = CameraUpdateFactory.newLatLng(ll);
+
+    }
+    private void goToLocationZoom(double lat, double lng, int i) {
+    }*/
+
+
